@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Palette forêt nord France ───────────────────────────────
+   Inspirée des forêts d'Avesnois, de Thiérache et de l'Avesnois
+   Tons mousse, brume, écorce, fougère
+──────────────────────────────────────────────────────────── */
+:root {
+  --bg-deep:    #1a2018;   /* fond profond — vert nuit */
+  --bg-mid:     #161d14;   /* fond alterné légèrement plus sombre */
+  --cream:      #f7f5f0;   /* texte principal — blanc chaud */
+  --sage:       #b8cba8;   /* accent principal — vert sauge */
+  --moss:       #d8dad7;   /* texte secondaire — mousse */
+  --fern:       #c0c4bb;   /* texte tertiaire — fougère */
+  --shadow:     #5a6a4a;   /* très discret */
+  --border:     rgba(154,171,135,0.1);
+  --glow:       rgba(184,203,168,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  cursor: none;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--moss); border-radius: 2px; }
+
+/* ── Selection ──────────────────────────────────────────── */
+::selection { background: var(--sage); color: var(--bg-deep); }
+
+/* ── Cursor ─────────────────────────────────────────────── */
+.cursor-dot {
+  width: 5px; height: 5px;
+  background: var(--cream);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  width: 26px; height: 26px;
+  border: 1px solid rgba(237,234,227,0.25);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+.cursor-ring.hover {
+  width: 48px; height: 48px;
+  border-color: var(--sage);
+}
+
+/* ── Typography ─────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.font-serif { font-family: 'Cormorant Garamond', serif !important; }
+.font-mono  { font-family: 'JetBrains Mono', monospace !important; }
+
+/* ── Glass card ─────────────────────────────────────────── */
+.glass-card {
+  background: rgba(26, 32, 24, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+/* ── Mist layer ─────────────────────────────────────────── */
+.mist-layer {
+  position: absolute; width: 120%; left: -10%;
+  pointer-events: none; mix-blend-mode: screen;
+}
+
+/* ── Line decorative ────────────────────────────────────── */
+.line-sage {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sage), transparent);
+}
+.line-warm {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--moss), transparent);
+}
+
+/* ── Nav link ───────────────────────────────────────────── */
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fern);
+  transition: color 0.3s ease;
+}
+.nav-link:hover { color: var(--cream); }
+
+/* ── Admin ──────────────────────────────────────────────── */
+.admin-overlay { background: rgba(22, 29, 20, 0.98); }
